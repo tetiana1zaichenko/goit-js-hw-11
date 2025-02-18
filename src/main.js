@@ -11,7 +11,18 @@ const form = document.querySelector(".formImage");
 const btnSearch = document.querySelector(".btn_search");
 const input = document.querySelector(".inputImage");
 
+const loader = document.querySelector(".loader");
 
+function showLoader() {
+  loader.style.display = "block";
+}
+
+function hideLoader() {
+  loader.style.display = "none";
+}
+
+
+hideLoader()
 form.addEventListener('submit', ev => {
     ev.preventDefault();
     const userValue = input.value.trim()
@@ -23,10 +34,12 @@ form.addEventListener('submit', ev => {
 });
         return;
     } else { 
-        console.log('make HTTP request')
+        console.log('make HTTP request');
+        showLoader();
         searchImage(userValue)
-        .then(renderImages)
-            .catch((error) => console.log(error));
+            .then(renderImages)
+            .catch((error) => console.log(error))
+        .finally(() => hideLoader());
     }
     ev.target.reset();
 });
