@@ -10,6 +10,7 @@ import { renderImages } from "./js/render-functions.js";
 const form = document.querySelector(".formImage");
 const btnSearch = document.querySelector(".btn_search");
 const input = document.querySelector(".inputImage");
+const gallery = document.querySelector(".gallery");
 
 const loader = document.querySelector(".loader");
 
@@ -28,6 +29,7 @@ form.addEventListener('submit', ev => {
     const userValue = input.value.trim()
     console.log(userValue);
     if (userValue === "") {
+        gallery.innerHTML = "";
         iziToast.error({
     title: 'Error',
     message: 'Please, full the field!',

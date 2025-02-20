@@ -1,6 +1,8 @@
 import axios from 'axios';
 import iziToast from "izitoast";
 
+const gallery = document.querySelector(".gallery");
+
 
   export function searchImage(userValue) {
   const BASE_URL = 'https://pixabay.com';
@@ -20,6 +22,7 @@ import iziToast from "izitoast";
               if (res.data.hits.length !== 0) {
                   return res.data.hits;
               } else {
+                  gallery.innerHTML = "";
                   iziToast.error({
                       title: 'Error',
                       message: 'Sorry, there are no images matching your search query. Please try again!',
